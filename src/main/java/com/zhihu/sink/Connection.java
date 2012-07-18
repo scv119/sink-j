@@ -56,9 +56,14 @@ public class Connection {
     }
 
     public Connection(final String host) {
-        super();
         this.host = host;
     }
+
+    public Connection(final String host, final int port) {
+        this.host = host;
+        this.port = port;
+    }
+
 
     protected void flush() {
         try {
@@ -77,22 +82,15 @@ public class Connection {
     }
 
     protected Connection sendCommand(final Protocol.Command cmd, final byte[]... args) {
-        connect();
         protocol.sendCommand(outputStream, cmd, args);
         return this;
     }
 
     protected Connection sendCommand(final Protocol.Command cmd) {
-        connect();
         protocol.sendCommand(outputStream, cmd, new byte[0][]);
         return this;
     }
 
-    public Connection(final String host, final int port) {
-        super();
-        this.host = host;
-        this.port = port;
-    }
 
     public String getHost() {
         return host;

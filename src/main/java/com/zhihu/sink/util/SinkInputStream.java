@@ -85,8 +85,7 @@ public class SinkInputStream extends FilterInputStream {
         }
         String reply = sb.toString();
         if (reply.length() == 0) {
-            throw new RuntimeException(
-                    "It seems like server has closed the connection.");
+            return null;
         }
         return reply;
     }

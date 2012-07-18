@@ -51,7 +51,7 @@ public class Protocol {
 
     private byte[] processLine(final SinkInputStream is){
         String line = is.readLine();
-        if(line.equals(""))
+        if(line == null)
             return null;
         int len = Integer.parseInt(line);
         if (len == -1) {
